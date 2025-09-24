@@ -13,7 +13,7 @@ const cartSchema = new Schema<Icart>({
     products: [{
         productId: {type: Schema.Types.ObjectId, ref: 'product', required:true},
         quantity:{type: Number, required:true, min:1},
-    }],
+    }], 
 },{timestamps: true});
 
 export const cart = model<Icart>('cart',cartSchema);
