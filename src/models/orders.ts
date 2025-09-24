@@ -15,7 +15,7 @@ export interface Iorders extends Document {
     Country: String;
   };
   orderStatus: "pending" | "shipped" | "Delivered" | "Cancelled";
-  paymentstatus: "pending" | "paid" | "Refunded";
+  paymentStatus: "pending" | "paid" | "Refunded";
 }
 
 const orderschema = new Schema<Iorders>({
@@ -36,15 +36,17 @@ const orderschema = new Schema<Iorders>({
     Country: String,
   },
   orderStatus: {
+      type: String,
+      enum: ["pending", "shipped", "Delivered", "Cancelled"],
+      default: "pending",
+    },
+
+  paymentStatus: {
     type: String,
-    enum: ["pending","shipped" , "Delivered", "Cancelled"],
-    default: "Pending",
+    enum: ["pending", "paid", "Refunded"],
+    default: "pending",
   },
- paymentStatus: {
-    type: String,
-    enum: ["Pending", "Paid", "Refunded"],
-    default: "Pending",
-  },
+
 });
 
 export const order = model<Iorders>("order", orderschema);

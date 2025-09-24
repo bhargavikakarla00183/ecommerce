@@ -8,7 +8,7 @@ export const categoryvalidation = joi.object({
         "string.empty":"Description is required",
         "string.min": "Description must be atleast 10 characters",
     }),
-
+});
 export const updatecategoryvalidation = joi.object({
     name:joi.string().min(3).max(50).optional().messages({
         "string.empty": "Category name is required",
