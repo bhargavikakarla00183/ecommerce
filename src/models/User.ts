@@ -41,7 +41,6 @@ import {
   timestamp,
   pgEnum,
 } from "drizzle-orm/pg-core";
-import { relations } from "drizzle-orm";
 
 // Enum for user roles
 export const userRoleEnum = pgEnum("role", ["user", "admin"]);
