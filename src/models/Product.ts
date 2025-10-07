@@ -42,7 +42,7 @@ export const products = pgTable("products", {
   discountedPrice: numeric("discounted_price").notNull(),
   stock: integer("stock").notNull(),
   category: varchar("category", { length: 255 }).notNull(),
-  productId: integer("product_id").notNull(),   // FK → products.id
+  productId: integer("product_id").notNull(),   
   imageUrl: text("image_url").notNull(),
   avgRating: numeric("avg_rating").notNull(),
   noOfRatings: integer("no_of_ratings").notNull(),

@@ -4,9 +4,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsx watch src/db/mongodb.ts"
+    "build": "rimraf ./dist&& tsc",
+    "start": "node dist/src/index.js",
+    "dev": "tsx watch src/db/pg.ts"
   },
   "repository": {
     "type": "git",
@@ -34,8 +34,7 @@
     "pg": "^8.16.3",
     "rimraf": "^6.0.1",
     "tsc": "^2.0.4",
-    "tsx": "^4.20.5",
-    "typescript": "^5.9.2"
+    "tsx": "^4.20.5"
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
@@ -46,7 +45,9 @@
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mongoose": "^5.11.96",
     "@types/node": "^24.7.0",
+    "@types/pg": "^8.15.5",
     "@types/typescript": "^0.4.29",
-    "drizzle-kit": "^0.31.5"
+    "drizzle-kit": "^0.31.5",
+    "typescript": "^5.9.3"
   }
 }
