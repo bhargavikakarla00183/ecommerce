@@ -36,9 +36,58 @@ export class Authcontroller {
         token,
         user: {
             id: newuser._id,
-            name: 
+            name: newuser.name, 
+            email: newuser.email,
+            role: newuser.role
         }
-     })
-   }
-)
+     });
+   });
+  
+   login = (async(req: Request , res: Response) =>{
+      const {error} = await loginvalidation(req.body);
+      if(error){
+        return res.status(400).json({message: error.details[0].message});
+      }
+      const {email,password} = req.body;;
+      const user = await User.findOne({email});
+      if(!user){
+        return res.status(404).json({message: "User not found"});
+      }
+      const ispassword = await bcrypt.compare(password, user.password);
+      if(!ispassword){
+        return res.status(400).json({message: "Invalid credentials"});
+      }
+    const token = generatetoken()
+
+
+
+
+
+
+
+
+
+
+
+   })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
