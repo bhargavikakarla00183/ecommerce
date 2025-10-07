@@ -29,6 +29,41 @@
       "when": 1759834500723,
       "tag": "0003_zippy_lila_cheney",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1759836068262,
+      "tag": "0004_bouncy_talon",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1759836271529,
+      "tag": "0005_smooth_zuras",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1759836672343,
+      "tag": "0006_optimal_sleeper",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1759840176317,
+      "tag": "0007_flaky_metal_master",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1759840263726,
+      "tag": "0008_even_angel",
+      "breakpoints": true
     }
   ]
 }
