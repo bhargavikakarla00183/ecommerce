@@ -9,3 +9,4 @@ const Categoryschema = new Schema<Icategories>({
 });
 
 export const Category = model<Icategories>('categorie',Categoryschema)
+

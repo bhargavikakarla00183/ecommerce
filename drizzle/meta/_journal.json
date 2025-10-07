@@ -22,6 +22,13 @@
       "when": 1759832700970,
       "tag": "0002_lazy_prowler",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1759834500723,
+      "tag": "0003_zippy_lila_cheney",
+      "breakpoints": true
     }
   ]
 }
