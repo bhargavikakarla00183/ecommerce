@@ -1,3 +1,16 @@
+import { pgTable, serial, integer, text } from "drizzle-orm/pg-core";
+
+
+export const reviews = pgTable("reviews", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),       
+  productId: integer("product_id").notNull(), 
+  rating: integer("rating").notNull(),
+  comment: text("comment").notNull(),
+});
+
+
+
 // import{ Schema, model, Document,Types} from  "mongoose";
 // export interface Ireview extends Document{
 //     userid:Types.ObjectId;
@@ -16,13 +29,4 @@
 // export const review = model<Ireview>('review',reviewschema)
 
 
-import { pgTable, serial, integer, text } from "drizzle-orm/pg-core";
 
-
-export const reviews = pgTable("reviews", {
-  id: serial("id").primaryKey(),
-  userId: integer("user_id").notNull(),       
-  productId: integer("product_id").notNull(), 
-  rating: integer("rating").notNull(),
-  comment: text("comment").notNull(),
-});

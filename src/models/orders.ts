@@ -1,3 +1,25 @@
+import { pgTable, serial, integer, varchar, numeric, timestamp } from "drizzle-orm/pg-core";
+
+export const orders = pgTable("orders", {
+  id: serial("id").primaryKey(),
+  userId: integer("user_id").notNull(),
+  orderId: integer("order_id").notNull(),
+  productId: integer("product_id").notNull(),
+  quantity: integer("quantity").notNull(),
+  price: numeric("price").notNull(),
+  totalAmount: numeric("total_amount").notNull(),
+  street: varchar("street", { length: 255 }),
+  city: varchar("city", { length: 100 }),
+  state: varchar("state", { length: 100 }),
+  postalCode: varchar("postal_code", { length: 20 }),
+  country: varchar("country", { length: 100 }),
+  orderStatus: varchar("order_status", { length: 20 }).default("pending"),
+  paymentStatus: varchar("payment_status", { length: 20 }).default("pending"),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow(),
+});
+
+
 // import { Schema, model, Document, Types } from "mongoose";
 // export interface Iorders extends Document {
 //   userid: Types.ObjectId;
@@ -51,23 +73,3 @@
 
 // export const order = model<Iorders>("order", orderschema);
 
-import { pgTable, serial, integer, varchar, numeric, timestamp } from "drizzle-orm/pg-core";
-
-export const orders = pgTable("orders", {
-  id: serial("id").primaryKey(),
-  userId: integer("user_id").notNull(),
-  orderId: integer("order_id").notNull(),
-  productId: integer("product_id").notNull(),
-  quantity: integer("quantity").notNull(),
-  price: numeric("price").notNull(),
-  totalAmount: numeric("total_amount").notNull(),
-  street: varchar("street", { length: 255 }),
-  city: varchar("city", { length: 100 }),
-  state: varchar("state", { length: 100 }),
-  postalCode: varchar("postal_code", { length: 20 }),
-  country: varchar("country", { length: 100 }),
-  orderStatus: varchar("order_status", { length: 20 }).default("pending"),
-  paymentStatus: varchar("payment_status", { length: 20 }).default("pending"),
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
-});
