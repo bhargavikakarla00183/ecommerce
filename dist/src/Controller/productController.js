@@ -9,71 +9,77 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
-const userservice_1 = require("../Services/userservice");
-const userService = new userservice_1.UserService();
-class UserController {
-    // Create user
-    createUser(req, res) {
+exports.ProductController = void 0;
+const productservice_1 = require("../Services/productservice");
+const productService = new productservice_1.ProductService();
+class ProductController {
+    // Create Product
+    createProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const input = req.body;
-                const user = yield userService.createUser(input);
-                res.status(201).json(user);
+                const product = yield productService.createProduct(req.body);
+                res.status(201).json(product);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Get all users
-    getAllUsers(req, res) {
+    // Get All Products
+    getAllProducts(_req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const users = yield userService.getAllUsers();
-                res.status(200).json(users);
+                const products = yield productService.getAllProducts();
+                res.json(products);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Get user by ID
-    getUserById(req, res) {
+    // Get Product by ID
+    getProductById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
-                const user = yield userService.getUserById(id);
-                if (!user)
-                    return res.status(404).json({ message: "User not found" });
-                res.status(200).json(user);
+                if (isNaN(id))
+                    return res.status(400).json({ error: "Invalid product ID" });
+                const product = yield productService.getProductById(id);
+                if (!product)
+                    return res.status(404).json({ message: "Product not found" });
+                res.json(product);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Update user
-    updateUser(req, res) {
+    // Update Product
+    updateProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
-                const data = req.body;
-                const updatedUser = yield userService.updateUser(id, data);
-                res.status(200).json(updatedUser);
+                if (isNaN(id))
+                    return res.status(400).json({ error: "Invalid product ID" });
+                const updatedProduct = yield productService.updateProduct(id, req.body);
+                if (!updatedProduct)
+                    return res.status(404).json({ message: "Product not found" });
+                res.json(updatedProduct);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Delete user
-    deleteUser(req, res) {
+    // Delete Product
+    deleteProduct(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
-                const result = yield userService.deleteUser(id);
-                res.status(200).json(result);
+                if (isNaN(id))
+                    return res.status(400).json({ error: "Invalid product ID" });
+                const result = yield productService.deleteProduct(id);
+                res.json(result);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
@@ -81,4 +87,4 @@ class UserController {
         });
     }
 }
-exports.UserController = UserController;
+exports.ProductController = ProductController;

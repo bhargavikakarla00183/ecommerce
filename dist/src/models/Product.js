@@ -1,36 +1,6 @@
 "use strict";
-// import {Schema,model,Document} from 'mongoose';
-// export interface Iprod extends Document {
-//     name: string;
-//     description: string;
-//     price:number;
-//     discountedprice: number;
-//     Stock:number;
-//     Category: String;
-//     images: String;
-//     ratings : [{
-//         avgratings: number;
-//         noofratings: number;
-//     }]
-//        Createdat: Date;
-//        Updatedat: Date;
-// }
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.products = void 0;
-// const prodschema = new Schema <Iprod>({
-//       name :{type: String , required : true },
-//       description:{type: String, required : true},
-//       price:{type: Number, required: true },
-//       discountedprice:{type:Number, required: true},
-//       Stock:{type: Number, required: true },
-//       Category:{type: String, required : true},
-//       images:[{type: String}],
-//       ratings :[{
-//         avgratings:{type: Number, required: true},
-//         noofratings:{type: Number, required: true}
-//       }],
-// },{timestamps: true});
-// export const Product =  model<Iprod>('product', prodschema);
 const pg_core_1 = require("drizzle-orm/pg-core");
 exports.products = (0, pg_core_1.pgTable)("products", {
     id: (0, pg_core_1.serial)("id").primaryKey(),
@@ -47,3 +17,33 @@ exports.products = (0, pg_core_1.pgTable)("products", {
     createdAt: (0, pg_core_1.timestamp)("created_at").defaultNow(),
     updatedAt: (0, pg_core_1.timestamp)("updated_at").defaultNow(),
 });
+// import {Schema,model,Document} from 'mongoose';
+// export interface Iprod extends Document {
+//     name: string;
+//     description: string;
+//     price:number;
+//     discountedprice: number;
+//     Stock:number;
+//     Category: String;
+//     images: String;
+//     ratings : [{
+//         avgratings: number;
+//         noofratings: number;
+//     }]
+//        Createdat: Date;
+//        Updatedat: Date;
+// }
+// const prodschema = new Schema <Iprod>({
+//       name :{type: String , required : true },
+//       description:{type: String, required : true},
+//       price:{type: Number, required: true },
+//       discountedprice:{type:Number, required: true},
+//       Stock:{type: Number, required: true },
+//       Category:{type: String, required : true},
+//       images:[{type: String}],
+//       ratings :[{
+//         avgratings:{type: Number, required: true},
+//         noofratings:{type: Number, required: true}
+//       }],
+// },{timestamps: true});
+// export const Product =  model<Iprod>('product', prodschema);

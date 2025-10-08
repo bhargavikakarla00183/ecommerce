@@ -9,71 +9,77 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
-const userservice_1 = require("../Services/userservice");
-const userService = new userservice_1.UserService();
-class UserController {
-    // Create user
-    createUser(req, res) {
+exports.CategoryController = void 0;
+const categorieservice_1 = require("../Services/categorieservice");
+const categoryService = new categorieservice_1.CategoryService();
+class CategoryController {
+    // Create category
+    createCategory(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const input = req.body;
-                const user = yield userService.createUser(input);
-                res.status(201).json(user);
+                const category = yield categoryService.createCategory(req.body);
+                res.status(201).json(category);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Get all users
-    getAllUsers(req, res) {
+    // Get all categories
+    getAllCategories(_req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const users = yield userService.getAllUsers();
-                res.status(200).json(users);
+                const data = yield categoryService.getAllCategories();
+                res.json(data);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Get user by ID
-    getUserById(req, res) {
+    // Get category by ID
+    getCategoryById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
-                const user = yield userService.getUserById(id);
-                if (!user)
-                    return res.status(404).json({ message: "User not found" });
-                res.status(200).json(user);
+                if (isNaN(id))
+                    return res.status(400).json({ error: "Invalid category ID" });
+                const category = yield categoryService.getCategoryById(id);
+                if (!category)
+                    return res.status(404).json({ message: "Category not found" });
+                res.json(category);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Update user
-    updateUser(req, res) {
+    // Update category
+    updateCategory(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
-                const data = req.body;
-                const updatedUser = yield userService.updateUser(id, data);
-                res.status(200).json(updatedUser);
+                if (isNaN(id))
+                    return res.status(400).json({ error: "Invalid category ID" });
+                const updated = yield categoryService.updateCategory(id, req.body);
+                if (!updated)
+                    return res.status(404).json({ message: "Category not found" });
+                res.json(updated);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
             }
         });
     }
-    // Delete user
-    deleteUser(req, res) {
+    // Delete category
+    deleteCategory(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const id = Number(req.params.id);
-                const result = yield userService.deleteUser(id);
-                res.status(200).json(result);
+                if (isNaN(id))
+                    return res.status(400).json({ error: "Invalid category ID" });
+                const result = yield categoryService.deleteCategory(id);
+                res.json(result);
             }
             catch (err) {
                 res.status(500).json({ error: err.message });
@@ -81,4 +87,4 @@ class UserController {
         });
     }
 }
-exports.UserController = UserController;
+exports.CategoryController = CategoryController;
