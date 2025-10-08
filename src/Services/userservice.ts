@@ -58,8 +58,6 @@ export class UserService {
 
 
 
-
-
 // import {signupvalidation} from "../Validations/signupvalidation";
 // import { loginvalidation} from "../Validations/loginvalidation";
 // import {Request,Response} from "express";
