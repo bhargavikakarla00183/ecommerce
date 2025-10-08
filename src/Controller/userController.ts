@@ -40,7 +40,7 @@ export class UserController {
   // Update user
   async updateUser(req: Request, res: Response) {
     try {
-      const id = Number(req.params.id);
+        const id = Number(req.params.id);
       const data = req.body;
       const updatedUser = await userService.updateUser(id, data);
       res.status(200).json(updatedUser);

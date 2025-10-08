@@ -57,7 +57,12 @@ class UserController {
     updateUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const id = Number(req.params.id);
+                // const id = req.params.id; 
+                const id = parseInt(req.params.id, 10);
+                // ✅ Check if conversion was successful
+                if (isNaN(id)) {
+                    return res.status(400).json({ error: "Invalid user ID" });
+                }
                 const data = req.body;
                 const updatedUser = yield userService.updateUser(id, data);
                 res.status(200).json(updatedUser);

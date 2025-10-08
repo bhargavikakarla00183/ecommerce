@@ -33,6 +33,7 @@ const pg_core_1 = require("drizzle-orm/pg-core");
 exports.userRoleEnum = (0, pg_core_1.pgEnum)("role", ["user", "admin"]);
 exports.users = (0, pg_core_1.pgTable)("users", {
     id: (0, pg_core_1.serial)("id").primaryKey(),
+    guid: (0, pg_core_1.uuid)("guid").defaultRandom().notNull().unique(),
     name: (0, pg_core_1.varchar)("name", { length: 255 }).notNull(),
     email: (0, pg_core_1.varchar)("email", { length: 255 }).unique().notNull(),
     password: (0, pg_core_1.text)("password").notNull(),

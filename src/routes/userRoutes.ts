@@ -11,4 +11,4 @@ router.get("/getUserById/:id", controller.getUserById.bind(controller));
 router.put("/updateUser/:id", controller.updateUser.bind(controller));
 router.delete("/deleteUser/:id", controller.deleteUser.bind(controller));
 
-export default router;
+export default router; 
