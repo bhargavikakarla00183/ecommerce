@@ -19,7 +19,7 @@ export class CartController {
  
   async getUserCart(req: Request, res: Response) {
     try {
-      const userId = parseInt(req.params.userId);
+      const userId = Number(req.params.userId);
       const cart = await cartService.getUserCart(userId);
       res.status(200).json(cart);
     } catch (error) {

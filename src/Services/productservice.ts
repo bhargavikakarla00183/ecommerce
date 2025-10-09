@@ -8,13 +8,13 @@ export class ProductService {
   async createProduct(data: {
     name: string;
     description: string;
-    price: string;             // ✅ changed to string
-    discountedPrice: string;   // ✅ changed to string
+    price: string;             
+    discountedPrice: string;  
     stock: number;
     category: string;
     productId: number;
     imageUrl: string;
-    avgRating: string;         // ✅ changed to string
+    avgRating: string;        
     noOfRatings: number;
   }) {
     const [product] = await db.insert(products).values(data).returning();
